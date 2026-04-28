@@ -1,5 +1,6 @@
 import { Button, Card, Chip, Separator } from '@heroui/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const PhotoCard = ({photo}) => {
@@ -11,7 +12,7 @@ const PhotoCard = ({photo}) => {
         className=' object-cover rounded-xl'
         sizes='(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw'
         />
-        <Chip size='sm' className=' absolute top-0 right-0 mt-2'>{photo.category}</Chip>
+        <Chip size='sm' className=' absolute top-0 right-2 mt-2'>{photo.category}</Chip>
      </div>
 
      <div>
@@ -28,7 +29,9 @@ const PhotoCard = ({photo}) => {
         <p>⬇️</p>
         <p>{photo.downloads}</p>
      </div>
+     <Link href={`/all-photo/${photo.id}`}>
      <Button className={'text-center items-center mt-2 w-full'}>View Details</Button>
+     </Link>
     </Card>
   )
 }
