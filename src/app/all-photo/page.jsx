@@ -1,15 +1,21 @@
+import Category from '@/components/Category'
 import PhotoCard from '@/components/PhotoCard'
 import React from 'react'
 
-const AllPhotosPage =async () => {
+const AllPhotosPage =async ({searchParams}) => {
+  const {category}= await searchParams
+  console.log(category)
     const res = await fetch('https://image-generator-xi-blush.vercel.app/data.json')
     const allphotos = await res.json()
-    console.log(allphotos)
+
+    const filteredPhotos = category ? allphotos.filter(photo=>photo.category.toLowerCase() == category.toLowerCase()): allphotos
+   
   return (
     <div>
         <h1 className='text-2xl font-bold m-4'>All Photos</h1>
+        <Category/>
         <div className=' grid grid-cols-1 md:grid-cols-4 gap-4 mt-4'>
-            {allphotos.map(photo=><PhotoCard photo={photo} key={photo.id}/>)}
+            {filteredPhotos.map(photo=><PhotoCard photo={photo} key={photo.id}/>)}
         </div>
     </div>
   )
