@@ -24,7 +24,7 @@ const SignInPage = () => {
       await authClient.signIn.social({
         provider:"google"
       })
-      console.log(data)
+      
     }
 
   return (
