@@ -4,7 +4,7 @@ import React from 'react'
 
 const AllPhotosPage =async ({searchParams}) => {
   const {category}= await searchParams
-  console.log(category)
+
     const res = await fetch('https://image-generator-xi-blush.vercel.app/data.json')
     const allphotos = await res.json()
 
